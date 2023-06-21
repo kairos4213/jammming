@@ -11,7 +11,6 @@ function App() {
       </header>
       <main>
         <SearchBar />
-        <button>Search</button>
         <SearchResults />
         <Playlist />
         <Tracklist />

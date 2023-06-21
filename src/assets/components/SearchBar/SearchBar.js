@@ -1,7 +1,7 @@
 export default function SearchBar() {
     return (
         <div className="search-bar">
-            <p>Test Search Bar Render</p>
+            <input placeholder="Enter artist, song name, or album" />
         </div>
     )
 }
