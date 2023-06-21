@@ -1,3 +1,4 @@
+import './App.css'
 import Playlist from "./assets/components/Playlist/Playlist";
 import SearchBar from "./assets/components/SearchBar/SearchBar";
 import SearchResults from "./assets/components/SearchResults/SearchResults";
