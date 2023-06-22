@@ -1,14 +1,16 @@
 import './SearchResults.css'
 import albumArt from './images/adtrAlbumArt.jpg'
 
-export default function SearchResults() {
+export default function SearchResults(props) {
+
+    console.log(props.albumArt)
     return (
         <div className="search-results">
             <div className="result-wrapper">
-                <img className="album-art" alt="Album art" src={albumArt}/>
-                <p className="song">Song: Second Sucks</p>
-                <p className="artist">Artist: A Day to Remember</p>
-                <p className="album">Album: What Separates Me from You</p>
+                <img className="album-art" alt="Album Art" src={albumArt}/>
+                <p className="song">Song: {props.song}</p>
+                <p className="artist">Artist: {props.artist}</p>
+                <p className="album">Album: {props.album}</p>
             </div>
         </div>
     )
