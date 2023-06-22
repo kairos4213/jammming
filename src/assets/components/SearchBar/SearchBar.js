@@ -1,7 +1,11 @@
-export default function SearchBar() {
+
+
+export default function SearchBar(searchValue) {
+
     return (
-        <div className="search-bar">
-            <input placeholder="Enter artist, song name, or album" />
-        </div>
+        <form className="search-bar" onSubmit={() => searchValue}>
+            <input name="searchInput" placeholder="Enter artist, song name, or album" />
+            <button type="submit">Search</button>
+        </form>
     )
 }

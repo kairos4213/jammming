@@ -1,3 +1,4 @@
+import React from 'react'
 import './App.css'
 import Playlist from "./assets/components/Playlist/Playlist";
 import SearchBar from "./assets/components/SearchBar/SearchBar";
@@ -6,6 +7,19 @@ import Track from "./assets/components/Track/Track";
 import Tracklist from "./assets/components/Tracklist/Tracklist";
 
 function App() {
+  const [trackData, setTrackData] = React.useState("")
+
+  function handleSearch(event) {
+    event.preventDefault()
+
+    const search = event.target
+    const searchData = new FormData(search)
+
+    const searchJson = Object.fromEntries(searchData.entries())
+
+    setTrackData(searchData)
+  }
+
 
   const trackObjects = [
     {
@@ -29,7 +43,8 @@ function App() {
       <header className="app-header">
       </header>
       <main>
-        <SearchBar />
+        <SearchBar searchValue={handleSearch} />
+        {trackData}
         <SearchResults 
           song={trackObjects[0].name}
           artist={trackObjects[0].artist}
