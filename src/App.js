@@ -1,10 +1,10 @@
 import React from 'react'
 import './App.css'
-import Playlist from "./assets/components/Playlist/Playlist";
-import SearchBar from "./assets/components/SearchBar/SearchBar";
-import SearchResults from "./assets/components/SearchResults/SearchResults";
-import Track from "./assets/components/Track/Track";
-import Tracklist from "./assets/components/Tracklist/Tracklist";
+import Playlist from './components/Playlist/Playlist';
+import SearchBar from './components/SearchBar/SearchBar';
+import SearchResults from './components/SearchResults/SearchResults';
+import Track from './components/Track/Track';
+import Tracklist from './components/Tracklist/Tracklist';
 
 function App() {
   const [trackData, setTrackData] = React.useState("")
@@ -15,7 +15,7 @@ function App() {
     const search = event.target
     const searchData = new FormData(search)
 
-    const searchJson = Object.fromEntries(searchData.entries())
+    // const searchJson = Object.fromEntries(searchData.entries())
 
     setTrackData(searchData)
   }
