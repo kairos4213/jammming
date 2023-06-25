@@ -1,10 +1,12 @@
 import React from 'react';
 import './Playlist.module.css';
+import Tracklist from '../Tracklist/Tracklist';
 
 export default function Playlist() {
     return (
         <div className="playlist">
-            <p>Playlist test render</p>
+            <Tracklist />
+            <button>Save to Spotify</button>
         </div>
     )
 }
