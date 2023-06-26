@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Playlist.module.css';
 import Tracklist from '../Tracklist/Tracklist';
 
@@ -8,15 +8,19 @@ export default function Playlist(props) {
         props.updateName(event.target.value)
     }
 
+    function handleSubmit(event) {
+        console.log("Saved")
+    }
+
     return (
         <div className="playlist">
-            <input value={props.playlistName} onChange={handlePlaylistNameChange} />
+            <input onChange={handlePlaylistNameChange} value={props.playlistName} />
             <Tracklist
                 tracks={props.playlistTracks} 
                 removeTrack={props.removeTrack}
                 isRemove={true}
             />
-            <button>Save to Spotify</button>
+            <button type="submit" onSubmit={handleSubmit}>Save to Spotify</button>
         </div>
     )
 }

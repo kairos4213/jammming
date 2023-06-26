@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import './App.css';
 import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
@@ -8,7 +8,7 @@ import { data } from '../../util/trackData';
 
 function App() {
   const [searchResults, setSearchResults] = useState([])
-  const [playlistName, setPlaylistName] = useState('Enter Playlist Name')
+  const [playlistName, setPlaylistName] = useState('Jammming Playlist')
   const [playlistTracks, setPlaylistTracks] = useState([])
   const trackInformation = data
 
@@ -25,17 +25,19 @@ function App() {
     setPlaylistName(name)
   }
 
-  function addTrack(track) {
-    if (playlistTracks.some(savedTrack => savedTrack.id === track.id))
-      return;
-    setPlaylistTracks(prevTracks => [...prevTracks, track])
-  }
+  const addTrack = useCallback(track => {
+    if (playlistTracks.some(savedTrack => savedTrack.id === track.id)) {
+      return
+    } else {
+      setPlaylistTracks(prevTracks => [...prevTracks, track])
+    }
+  }, [playlistTracks])
 
-  function removeTrack(track) {
+  const removeTrack = useCallback(track => {
     setPlaylistTracks(prevTracks => {
       prevTracks.filter(savedTrack => savedTrack.id !== track.id)
     })
-  }
+  }, [])
 
   return (
     <div className="app">
@@ -43,11 +45,11 @@ function App() {
       </header>
       <main>
         <SearchBar onSearch={search} />
-        <SearchResults 
+        <SearchResults
           searchResults={searchResults}
           addTrack={addTrack}
         />
-        <Playlist 
+        <Playlist
           playlistName={playlistName}
           playlistTracks={playlistTracks}
           updateName={updatePlaylistName}

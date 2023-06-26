@@ -3,17 +3,19 @@ import './Track.module.css';
 
 export default function Track(props) {
 
-    function handleAddTrack(event) {
+    function handleAddTrack(e) {
+        e.stopPropagation()
         props.addTrack(props.track)
     }
 
-    function handleRemoveTrack(event) {
+    function handleRemoveTrack(e) {
+        e.stopPropagation()
         props.removeTrack(props.track)
     }
 
     const removeOrAddButton = props.isRemove ? 
-        <button onClick={handleRemoveTrack}>Remove Track</button> : 
-        <button onClick={handleAddTrack}>Add Track</button>
+        <button type="button" onClick={handleRemoveTrack}>Remove Track</button> : 
+        <button type="button" onClick={handleAddTrack}>Add Track</button>
 
     return (
         <div className="track">
