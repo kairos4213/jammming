@@ -1,4 +1,4 @@
-export const trackData = [
+export const data = [
     {
         song: "Second Sucks",
         artist: "A Day to Remember",

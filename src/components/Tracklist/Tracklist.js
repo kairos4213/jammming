@@ -9,10 +9,11 @@ export default function Tracklist(props) {
             {props.tracks && props.tracks.map(track => {
                 return (
                     <Track 
-                        song={track.song}
-                        artist={track.artist}
-                        album={track.album}
+                        track={track}
                         key={track.id}
+                        addTrack={props.addTrack}
+                        removeTrack={props.removeTrack}
+                        isRemove={props.isRemove}
                     />
                 )
             })}

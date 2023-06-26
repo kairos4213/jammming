@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import './SearchBar.module.css';
 
 export default function SearchBar(props) {
-    const [searchValue, setSearchValue] = useState('');
+    const [searchInput, setSearchInput] = useState('');
 
-    function handleSearchValueChange(event) {
-        setSearchValue(event.target.value);
+    function handleSearchInputChange(event) {
+        setSearchInput(event.target.value);
     }
 
     function handleSearchSubmit(event) {
         event.preventDefault();
-        props.search(searchValue);
+        props.onSearch(searchInput);
     }
 
     return (
@@ -19,8 +19,8 @@ export default function SearchBar(props) {
                 type="search"
                 name="searchInput"
                 placeholder="Enter Artist Name"
-                value={searchValue}
-                onChange={handleSearchValueChange}
+                value={searchInput}
+                onChange={handleSearchInputChange}
             />
             <button type="submit">Search</button>
         </form>
