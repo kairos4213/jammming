@@ -1,27 +1,27 @@
 import React from 'react';
 import './Track.module.css';
 
-export default function Track(props) {
+export default function Track({track, key, onAddTrack, onRemoveTrack, isRemove}) {
 
     function handleAddTrack(e) {
         e.stopPropagation()
-        props.addTrack(props.track)
+        onAddTrack(track)
     }
 
     function handleRemoveTrack(e) {
         e.stopPropagation()
-        props.removeTrack(props.track)
+        onRemoveTrack(track)
     }
 
-    const removeOrAddButton = props.isRemove ? 
+    const removeOrAddButton = isRemove ? 
         <button type="button" onClick={handleRemoveTrack}>Remove Track</button> : 
         <button type="button" onClick={handleAddTrack}>Add Track</button>
 
     return (
         <div className="track">
-            <p>Song: {props.track.song}</p>
-            <p>Artist: {props.track.artist}</p>
-            <p>Album: {props.track.album}</p>
+            <p>Song: {track.song}</p>
+            <p>Artist: {track.artist}</p>
+            <p>Album: {track.album}</p>
             {removeOrAddButton}
         </div>
     )

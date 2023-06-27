@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchBar.module.css';
 
-export default function SearchBar(props) {
+export default function SearchBar({onSearch}) {
     const [searchInput, setSearchInput] = useState('');
 
     function handleSearchInputChange(event) {
@@ -10,7 +10,7 @@ export default function SearchBar(props) {
 
     function handleSearchSubmit(event) {
         event.preventDefault();
-        props.onSearch(searchInput);
+        onSearch(searchInput);
     }
 
     return (
