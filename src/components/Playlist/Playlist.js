@@ -2,14 +2,10 @@ import React from 'react';
 import './Playlist.module.css';
 import Tracklist from '../Tracklist/Tracklist';
 
-export default function Playlist({playlistName, playlistTracks, onUpdatePlaylistName, onRemoveTrack}) {
+export default function Playlist({playlistName, playlistTracks, onUpdatePlaylistName, onRemoveTrack, onSavePlaylist}) {
 
     function handlePlaylistNameChange(event) {
         onUpdatePlaylistName(event.target.value)
-    }
-
-    function handleSubmit(event) {
-        console.log("Saved")
     }
 
     return (
@@ -20,7 +16,7 @@ export default function Playlist({playlistName, playlistTracks, onUpdatePlaylist
                 onRemoveTrack={onRemoveTrack}
                 isRemove={true}
             />
-            <button type="submit" onSubmit={handleSubmit}>Save to Spotify</button>
+            <button type="button" onClick={onSavePlaylist}>Save to Spotify</button>
         </div>
     )
 }

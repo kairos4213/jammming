@@ -5,7 +5,7 @@ export const data = [
         album: "What Separates Me from You",
         id: 1,
         albumArt: "./images/adtrAlbumArt.jpg",
-        uri: "https://open.spotify.com/track/7t9PLlf9nI2Xo8WRrfcItk?si=2c7b6554f15540bf"
+        uri: "https://open.spotify.com/track/2EdZIRMxTX4lfbGzLLRh8f?si=3ac4da4136064831"
     },
     {
         song: "The Young and the Hopeless",
@@ -13,14 +13,14 @@ export const data = [
         album: "The Young and the Hopeless",
         id: 2,
         albumArt: "",
-        uri: "https://open.spotify.com/track/18l96LCRzEegdK7snU2DFF?si=deb06a9146c744d6"
+        uri: "https://open.spotify.com/track/2vfo7RvInNxLISPDif4mC2?si=cd2cc31850524f58"
     },
     {
-        song: "Trouble",
+        song: "Troubles",
         artist: "Drew Holcomb and the Neighbors",
-        album: "Trouble",
+        album: "Strangers No More",
         id: 3,
         albumArt: "",
-        uri: "https://open.spotify.com/track/3o5P6TF0Gop8MiuuuTtttl?si=ec3e3646b8844778"
+        uri: "https://open.spotify.com/track/24Ousx41wgEy1NDZP51I1J?si=30d1246fba6346dc"
     }
 ]

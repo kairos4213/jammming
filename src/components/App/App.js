@@ -3,7 +3,7 @@ import './App.css';
 import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
-import { data } from '../../util/trackData';
+import { data } from '../../util/mockSpotifyData';
 
 const trackInformation = data
 
@@ -37,21 +37,33 @@ function App() {
     })
   }
 
+  function handleSavePlaylist() {
+    if (!playlistName || !playlistTracks.length) {
+      return;
+    }
+
+    const tracks = playlistTracks.map(track => {
+      return track.uri;
+    });
+
+    const mockPlaylist = {name: playlistName, songs: tracks};
+    alert("Saved!")
+    console.log(mockPlaylist);
+  }
+
   return (
     <div className="app">
       <header className="app-header">
       </header>
       <main>
         <SearchBar onSearch={handleSearch} />
-        <SearchResults
-          searchResults={searchResults}
-          onAddTrack={handleAddTrack}
-        />
+        <SearchResults onAddTrack={handleAddTrack} searchResults={searchResults}/>
         <Playlist
           playlistName={playlistName}
           playlistTracks={playlistTracks}
           onUpdatePlaylistName={handleUpdatePlaylistName}
           onRemoveTrack={handleRemoveTrack}
+          onSavePlaylist={handleSavePlaylist}
         />
       </main>
     </div>
