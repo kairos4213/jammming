@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 import Playlist from '../Playlist/Playlist';
@@ -13,10 +13,12 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState('Jammming Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
-  const [profile, setProfile] = useState('');
+  const [loginStatus, setLoginStatus] = useState(false);
 
   function handleLogin() {
-    setProfile(Spotify.getProfile());
+    if (Spotify.requestAccessToken()) {
+      return setLoginStatus(!loginStatus);
+    }
   }
 
   function handleSearch(searchInput) {
@@ -62,7 +64,7 @@ function App() {
     <div className="app">
       <header className="app-header">
       </header>
-      {profile ?
+      {loginStatus ?
         <main>
           <SearchBar onSearch={handleSearch} />
           <SearchResults onAddTrack={handleAddTrack} searchResults={searchResults}/>

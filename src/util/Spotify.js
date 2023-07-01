@@ -1,5 +1,7 @@
 const clientId = '597ec828856d47c7bd4e2a8b1b128ca8';
 const redirectUri = 'http://localhost:3000';
+let accessToken;
+let codeVerifier;
 
 export const Spotify = {
     generateRandomString(length) {
@@ -28,7 +30,7 @@ export const Spotify = {
     },
 
     async requestUserAuth() {
-        let codeVerifier = Spotify.generateRandomString(128);
+        codeVerifier = Spotify.generateRandomString(128);
         
         await Spotify.generateCodeChallenge(codeVerifier).then(codeChallenge => {
             let state = Spotify.generateRandomString(16);
@@ -55,6 +57,10 @@ export const Spotify = {
     },
 
     async requestAccessToken() {
+        if (accessToken) {
+            return (accessToken);
+        }
+
         let codeVerifier = localStorage.getItem('code_verifier');
         const code = await Spotify.requestUserAuth();
 
@@ -85,8 +91,6 @@ export const Spotify = {
             .catch(error => {
                 console.error('Error:', error);
             });
-
-        return response;
     },
 
     async getProfile() {
@@ -98,8 +102,6 @@ export const Spotify = {
                 Authorization: 'Bearer ' + accessToken
             }
         });
-
-    return response.json;
     }
       
 }
