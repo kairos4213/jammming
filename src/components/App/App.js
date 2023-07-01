@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import './App.css';
+
 import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import { data } from '../../util/mockSpotifyData';
+import { Spotify } from '../../util/Spotify';
 
 const trackInformation = data
 
 function App() {
-  const [searchResults, setSearchResults] = useState([])
-  const [playlistName, setPlaylistName] = useState('Jammming Playlist')
-  const [playlistTracks, setPlaylistTracks] = useState([])
+  const [searchResults, setSearchResults] = useState([]);
+  const [playlistName, setPlaylistName] = useState('Jammming Playlist');
+  const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [profile, setProfile] = useState('');
+
+  function handleLogin() {
+    setProfile(Spotify.getProfile());
+  }
 
   function handleSearch(searchInput) {
     const searchValue = searchInput.toLowerCase()
@@ -55,17 +62,22 @@ function App() {
     <div className="app">
       <header className="app-header">
       </header>
-      <main>
-        <SearchBar onSearch={handleSearch} />
-        <SearchResults onAddTrack={handleAddTrack} searchResults={searchResults}/>
-        <Playlist
-          playlistName={playlistName}
-          playlistTracks={playlistTracks}
-          onUpdatePlaylistName={handleUpdatePlaylistName}
-          onRemoveTrack={handleRemoveTrack}
-          onSavePlaylist={handleSavePlaylist}
-        />
-      </main>
+      {profile ?
+        <main>
+          <SearchBar onSearch={handleSearch} />
+          <SearchResults onAddTrack={handleAddTrack} searchResults={searchResults}/>
+          <Playlist
+            playlistName={playlistName}
+            playlistTracks={playlistTracks}
+            onUpdatePlaylistName={handleUpdatePlaylistName}
+            onRemoveTrack={handleRemoveTrack}
+            onSavePlaylist={handleSavePlaylist}
+          />
+        </main> :
+        <main>
+          <button onClick={handleLogin}>Login to Spotify</button>
+        </main>
+      }
     </div>
   );
 }
