@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 import Playlist from '../Playlist/Playlist';
@@ -23,8 +23,7 @@ function App() {
   };
 
   function handleSearch(searchInput) {
-    const searchValue = Spotify.search(searchInput);
-    setSearchResults(searchValue);
+    Spotify.search(searchInput).then(setSearchResults)
   };
 
   function handleUpdatePlaylistName(name) {
@@ -58,6 +57,8 @@ function App() {
     alert("Saved!")
     console.log(mockPlaylist);
   }
+
+  console.log(searchResults);
 
   return (
     <div className="app">

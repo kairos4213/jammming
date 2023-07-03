@@ -1,7 +1,7 @@
 import React from 'react';
 import './Track.module.css';
 
-export default function Track({track, key, onAddTrack, onRemoveTrack, isRemove}) {
+export default function Track({track, onAddTrack, onRemoveTrack, isRemove}) {
 
     function handleAddTrack(e) {
         e.stopPropagation()
@@ -19,7 +19,7 @@ export default function Track({track, key, onAddTrack, onRemoveTrack, isRemove})
 
     return (
         <div className="track">
-            <p>Song: {track.song}</p>
+            <p>Song: {track.name}</p>
             <p>Artist: {track.artist}</p>
             <p>Album: {track.album}</p>
             {removeOrAddButton}
