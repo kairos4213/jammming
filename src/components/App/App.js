@@ -1,36 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
 
 import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
-import { data } from '../../util/mockSpotifyData';
 import { Spotify } from '../../util/Spotify';
-
-const trackInformation = data
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState('Jammming Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
-  const [loginStatus, setLoginStatus] = useState(false);
+  const [accessToken, setAccessToken] = useState('');
 
-  function handleLogin() {
-    if (Spotify.requestAccessToken()) {
-      return setLoginStatus(!loginStatus);
+  useEffect(() => {
+    if (localStorage.getItem('access_token') !== null) {
+      return setAccessToken(localStorage.getItem('access_token'));
     }
-  }
+  }, [accessToken]);
+
+  function handleUserAccess() {
+      Spotify.requestAccessToken()
+  };
 
   function handleSearch(searchInput) {
-    const searchValue = searchInput.toLowerCase()
-    setSearchResults(trackInformation.filter(track => 
-      track.artist.toLowerCase().includes(searchValue) && searchValue.length > 0
-    ))
-  }
+    const searchValue = Spotify.search(searchInput);
+    setSearchResults(searchValue);
+  };
 
   function handleUpdatePlaylistName(name) {
-    setPlaylistName(name)
-  }
+    setPlaylistName(name);
+  };
 
   function handleAddTrack(track) {
     if (playlistTracks.some(savedTrack => savedTrack.id === track.id)) {
@@ -64,7 +63,7 @@ function App() {
     <div className="app">
       <header className="app-header">
       </header>
-      {loginStatus ?
+      {accessToken ?
         <main>
           <SearchBar onSearch={handleSearch} />
           <SearchResults onAddTrack={handleAddTrack} searchResults={searchResults}/>
@@ -77,9 +76,10 @@ function App() {
           />
         </main> :
         <main>
-          <button onClick={handleLogin}>Login to Spotify</button>
+          <button onClick={handleUserAccess}>Access Spotify Account</button>
         </main>
       }
+        
     </div>
   );
 }

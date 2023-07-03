@@ -6,7 +6,8 @@ export default function Tracklist({onAddTrack, onRemoveTrack, tracks, isRemove})
   
     return (
         <div className="tracklist">
-            {tracks && tracks.map(track => {
+            {console.log(tracks)}
+            {tracks.map(track => {
                 return (
                     <Track 
                         track={track}
