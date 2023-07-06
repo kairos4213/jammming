@@ -18,7 +18,7 @@ export default function SearchBar({onSearch}) {
             <input
                 type="search"
                 name="searchInput"
-                placeholder="Enter Artist Name"
+                placeholder="Enter Song Name"
                 value={searchInput}
                 onChange={handleSearchInputChange}
             />

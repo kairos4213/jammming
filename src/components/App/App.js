@@ -8,7 +8,7 @@ import { Spotify } from '../../util/Spotify';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
-  const [playlistName, setPlaylistName] = useState('Jammming Playlist');
+  const [playlistName, setPlaylistName] = useState('New Jammming Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [accessToken, setAccessToken] = useState('');
 
@@ -22,8 +22,24 @@ function App() {
       Spotify.requestAccessToken()
   };
 
+  function handleBeforeUnload(event) {
+    localStorage.removeItem('access_token');
+  }
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
   function handleSearch(searchInput) {
-    Spotify.search(searchInput).then(setSearchResults)
+    if (searchInput.length > 0) {
+      Spotify.search(searchInput).then(setSearchResults)
+    } else {
+      return setSearchResults([]);
+    }
   };
 
   function handleUpdatePlaylistName(name) {
@@ -33,32 +49,28 @@ function App() {
   function handleAddTrack(track) {
     if (playlistTracks.some(savedTrack => savedTrack.id === track.id)) {
       return
-    }
-    setPlaylistTracks(prevTracks => [...prevTracks, track])
-  }
+    };
+    setPlaylistTracks(prevTracks => [...prevTracks, track]);
+  };
 
   function handleRemoveTrack(track) {
     setPlaylistTracks(prevTracks => {
-      const filteredPlaylist = prevTracks.filter(savedTrack => savedTrack.id !== track.id)
-      return filteredPlaylist
-    })
-  }
+      const filteredPlaylist = prevTracks.filter(savedTrack => savedTrack.id !== track.id);
+      return filteredPlaylist;
+    });
+  };
 
   function handleSavePlaylist() {
-    if (!playlistName || !playlistTracks.length) {
-      return;
-    }
+    const tracks = playlistTracks.map(track => track.uri);
 
-    const tracks = playlistTracks.map(track => {
-      return track.uri;
-    });
-
-    const mockPlaylist = {name: playlistName, songs: tracks};
-    alert("Saved!")
-    console.log(mockPlaylist);
-  }
-
-  console.log(searchResults);
+    Spotify.createPlaylist(playlistName, tracks)
+      .then(() => {
+        setPlaylistName('New Jamming Playlist');
+        setPlaylistTracks([]);
+      });
+    
+    window.alert(`${playlistName} has been saved to your Spotify!`);
+  };
 
   return (
     <div className="app">

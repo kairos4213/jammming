@@ -56,6 +56,7 @@ async function getAccessToken(code) {
         .catch(error => {
             console.error('Error:', error);
         });
+    return response;
 }
 
 export const Spotify = {
@@ -65,7 +66,7 @@ export const Spotify = {
         generateCodeChallenge(codeVerifier)
             .then(codeChallenge => {
                 let state = generateRandomString(16);
-                let scope = 'user-read-private user-read-email'; //Add more scope parameters to edit playlists, etc.
+                let scope = 'user-read-private user-read-email playlist-modify-public playlist-modify-private'; //Add more scope parameters to edit playlists, etc.
 
                 localStorage.setItem('code_verifier', codeVerifier);
 
@@ -103,9 +104,70 @@ export const Spotify = {
             name: track.name,
             artist: track.artists[0].name,
             album: track.album.name,
+            image: track.album.images[0].url,
             uri: track.uri
         }));
         
         return dataArray;
+    },
+
+    async getProfile() {
+        let accessToken = localStorage.getItem('access_token');
+
+        const response = await fetch('https://api.spotify.com/v1/me', {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
+
+        const data = await response.json();
+        const {id, display_name, email} = data;
+        const profile = {
+            userId: id,
+            email: email,
+            displayName: display_name,
+        };
+
+        return profile;
+    },
+
+    async createPlaylist(playlistName, trackUris) {
+        if (!playlistName || !trackUris.length) {
+            return;
+        }
+
+        const accessToken = localStorage.getItem('access_token');
+        const headers = {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        }
+        let userId;
+
+        Spotify.getProfile()
+            .then(async profile => {
+                userId = profile.userId;
+                try {
+                    const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify({
+                            name: playlistName,
+                            public: false
+                        })
+                    });
+                    if (!response.ok) {
+                        throw new Error('HTTP status ' + response.status);
+                    }
+                    const jsonResponse = await response.json();
+                    const playlistId = jsonResponse.id;
+                    return await fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify({ uris: trackUris })
+                    });
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
     }
 }

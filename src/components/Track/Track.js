@@ -19,6 +19,7 @@ export default function Track({track, onAddTrack, onRemoveTrack, isRemove}) {
 
     return (
         <div className="track">
+            <img src={track.image} alt='album cover'/>
             <p>Song: {track.name}</p>
             <p>Artist: {track.artist}</p>
             <p>Album: {track.album}</p>
