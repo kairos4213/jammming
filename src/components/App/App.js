@@ -5,6 +5,9 @@ import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import { Spotify } from '../../util/Spotify';
+import logo from '../../assets/logos/JammmingLogo.png';
+import landingImg from '../../assets/images/JammingMainPage.png';
+import spotifyLogo from '../../assets/logos/spotify-icons-logos/logos/01_RGB/02_PNG/Spotify_Logo_RGB_Black.png'
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -89,7 +92,9 @@ function App() {
           />
         </main> :
         <main>
-          <button onClick={handleUserAccess}>Access Spotify Account</button>
+          <img src={logo} alt="Jammming Logo" className='logo' />
+          <button onClick={handleUserAccess} className='accessButton'>Access Spotify</button>
+          <img src={landingImg} alt="Cartoon Girl Enjoying Music" className='landingImg' />
         </main>
       }
         
