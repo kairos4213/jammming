@@ -1,24 +1,9 @@
-.searchResults {
-    display: grid;
-    grid-auto-flow: column;
-    padding: 0;
+.searchResultsWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
-.resultWrapper {
-    display: grid;
-    color: white;
-    background-color: purple;
-    justify-items: center;
-    padding: 1.5rem 0;
-    margin: 0;
-}
-
-.albumArt {
-    width: 15rem;
-    border-radius: 10px;
-}
-
-.resultWrapper > p {
-    margin: 0;
-    font-size: 2ch;
+.tracklist {
+    flex: 0 0 auto;
 }

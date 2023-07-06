@@ -1,20 +1,49 @@
-main {
-    background-color: blue;
+.app {
+    background: linear-gradient(115deg, #06DFFA, #DF9437);
+    height: 100vh;
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    background: linear-gradient(90deg,#03384A, #835561);
+    background-clip: text;
+    color: transparent;
 }
 
 .logo {
     width: 8%;
     transform: rotate(-25deg);
-    padding: 20px 10px;
+    padding: 20px 2px 5px 10px;
+}
+
+.welcomeTitle {
+    position: absolute;
+    top: 37%;
+    left: 34%;
+    background: linear-gradient(90deg,#03384A, #835561);
+    background-clip: text;
+    color: transparent;
 }
 
 .accessButton {
     position: absolute;
-    top: 45%;
-    left: 38%;
-    width: 7em;
+    top: 47%;
+    left: 40%;
+    width: 10em;
     border-radius: 25px;
     padding: 10px 10px;
+    background: transparent;
+}
+
+.accessButton:Hover {
+    cursor: pointer;
+    background-color: #DF9437;
+}
+
+.spotifyLogo {
+    width: 7rem;
 }
 
 .landingImg {

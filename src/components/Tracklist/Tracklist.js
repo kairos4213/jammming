@@ -1,11 +1,11 @@
 import React from 'react';
-import './Tracklist.module.css';
+import styles from './Tracklist.module.css';
 import Track from '../Track/Track';
 
 export default function Tracklist({onAddTrack, onRemoveTrack, tracks, isRemove}) {
   
     return (
-        <div className="tracklist">
+        <div className={styles.tracklist}>
             {tracks && tracks.map(track => {
                 return (
                     <Track 

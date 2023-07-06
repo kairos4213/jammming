@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './SearchBar.module.css';
+import styles from './SearchBar.module.css';
 
 export default function SearchBar({onSearch}) {
     const [searchInput, setSearchInput] = useState('');
@@ -14,15 +14,16 @@ export default function SearchBar({onSearch}) {
     }
 
     return (
-        <form className="search-bar" onSubmit={handleSearchSubmit}>
+        <form className={styles.searchBar} onSubmit={handleSearchSubmit}>
             <input
+                className={styles.searchInput}
                 type="search"
                 name="searchInput"
                 placeholder="Enter Song Name"
                 value={searchInput}
                 onChange={handleSearchInputChange}
             />
-            <button type="submit">Search</button>
+            <button className={styles.searchSubmit} type="submit">Search</button>
         </form>
     )
 }

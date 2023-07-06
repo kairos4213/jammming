@@ -1,5 +1,5 @@
 import React from 'react';
-import './Track.module.css';
+import styles from './Track.module.css';
 
 export default function Track({track, onAddTrack, onRemoveTrack, isRemove}) {
 
@@ -19,7 +19,7 @@ export default function Track({track, onAddTrack, onRemoveTrack, isRemove}) {
 
     return (
         <div className="track">
-            <img src={track.image} alt='album cover'/>
+            <img src={track.image} alt='album cover' className={styles.albumArt}/>
             <p>Song: {track.name}</p>
             <p>Artist: {track.artist}</p>
             <p>Album: {track.album}</p>

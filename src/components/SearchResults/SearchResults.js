@@ -1,14 +1,15 @@
 import React from 'react';
-import './SearchResults.module.css';
+import styles from './SearchResults.module.css';
 import Tracklist from '../Tracklist/Tracklist'
 
 
 export default function SearchResults({searchResults, onAddTrack}) {
 
     return (
-        <div className="searchResults">
+        <div className={styles.searchResultsWrapper}>
             <h2>Search Results</h2>
-            <Tracklist 
+            <Tracklist
+                className={styles.tracklist} 
                 tracks={searchResults}
                 onAddTrack={onAddTrack}
             />

@@ -1,0 +1,22 @@
+.searchBar {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchInput {
+    background-color: transparent;
+    border-radius: 10px;
+    margin: 20px auto;
+    text-align: center;
+    width: 20rem;
+    padding: 10px 5px;
+}
+
+.searchSubmit {
+    background-color: transparent;
+    border-radius: 25px;
+    width: 3.5rem;
+    justify-self: center;
+    padding: 4px 2px;
+}
