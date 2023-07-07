@@ -1,5 +1,5 @@
 import React from 'react';
-import './Playlist.module.css';
+import styles from './Playlist.module.css';
 import Tracklist from '../Tracklist/Tracklist';
 
 export default function Playlist({playlistName, playlistTracks, onUpdatePlaylistName, onRemoveTrack, onSavePlaylist}) {
@@ -9,7 +9,7 @@ export default function Playlist({playlistName, playlistTracks, onUpdatePlaylist
     }
 
     return (
-        <div className="playlist">
+        <div className={styles.playlist}>
             <input onChange={handlePlaylistNameChange} value={playlistName} placeholder='Enter Playlist Name' />
             <Tracklist
                 tracks={playlistTracks} 

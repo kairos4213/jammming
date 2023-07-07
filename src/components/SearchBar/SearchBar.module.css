@@ -1,7 +1,7 @@
 .searchBar {
     display: grid;
-    justify-content: center;
-    align-items: center;
+    justify-items: center;
+    align-content: center;
 }
 
 .searchInput {
@@ -9,14 +9,13 @@
     border-radius: 10px;
     margin: 20px auto;
     text-align: center;
-    width: 20rem;
+    width: 30rem;
     padding: 10px 5px;
 }
 
 .searchSubmit {
     background-color: transparent;
     border-radius: 25px;
-    width: 3.5rem;
-    justify-self: center;
+    width: 5rem;
     padding: 4px 2px;
 }

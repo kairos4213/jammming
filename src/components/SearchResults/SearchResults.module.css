@@ -1,9 +1,8 @@
 .searchResultsWrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    border: solid black;
+    border-radius: 10px;
 }
 
-.tracklist {
-    flex: 0 0 auto;
+h2 {
+    text-align: center;
 }

@@ -1,0 +1,20 @@
+.playlist {
+    display: grid;
+    justify-items: center;
+}
+
+input {
+    background-color: transparent;
+    border-radius: 10px;
+    margin: 20px auto;
+    text-align: center;
+    width: 30rem;
+    padding: 10px 5px;
+}
+
+button {
+    background-color: transparent;
+    border-radius: 25px;
+    width: 5rem;
+    padding: 4px 2px;
+}

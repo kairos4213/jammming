@@ -1,3 +1,8 @@
+.track {
+    display: grid;
+    padding: 2rem;
+}
+
 .albumArt {
-    width: 15%;
+    width: 10rem;
 }
