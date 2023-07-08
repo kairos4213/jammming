@@ -16,8 +16,8 @@ html {
     align-items: center;
     font-size: 3rem;
     background: linear-gradient(90deg,#03384A, #835561);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
@@ -32,8 +32,8 @@ html {
     top: 37%;
     left: 34%;
     background: linear-gradient(90deg,#03384A, #835561);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 

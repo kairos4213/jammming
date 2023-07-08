@@ -5,5 +5,11 @@
 }
 
 .tracklist::-webkit-scrollbar {
-    display: none;
+    background-color: #03384A;
+    border-radius: 10px;
+}
+
+.tracklist::-webkit-scrollbar-thumb {
+    background-color: #835561;
+    border-radius: 10px;
 }

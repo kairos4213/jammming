@@ -3,7 +3,6 @@
     flex-direction: column;
     margin-top: 1rem;
     background-color: inherit;
-    height: fit-content;
 }
 
 input {
@@ -13,7 +12,6 @@ input {
     text-align: center;
     width: 30rem;
     padding: 10px 5px;
-    box-shadow: 
 }
 
 button {

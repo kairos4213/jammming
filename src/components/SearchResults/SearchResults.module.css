@@ -5,7 +5,7 @@
 h2 {
     text-align: center;
     background: linear-gradient(90deg,#03384A, #835561);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
