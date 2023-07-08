@@ -4,8 +4,14 @@
     align-content: center;
 }
 
-.searchInput {
-    background-color: transparent;
+input {
+    font-family: inherit;
+    font-size: 20px;
+    background: linear-gradient(90deg,#03384A, #835561);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
     border-radius: 10px;
     margin: 20px auto;
     text-align: center;
@@ -14,8 +20,16 @@
 }
 
 .searchSubmit {
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
     background-color: transparent;
     border-radius: 25px;
     width: 5rem;
-    padding: 4px 2px;
+    padding: 0.25rem 0.775rem;
+}
+
+.searchSubmit:Hover {
+    cursor: pointer;
+    background-color: #DF9437;
 }

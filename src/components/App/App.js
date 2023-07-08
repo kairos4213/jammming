@@ -29,13 +29,13 @@ function App() {
     localStorage.removeItem('access_token');
   }
 
-  // useEffect(() => {
-  //   window.addEventListener('beforeunload', handleBeforeUnload);
+  useEffect(() => {
+    window.addEventListener('beforeunload', handleBeforeUnload);
 
-  //   return () => {
-  //     window.removeEventListener('beforeunload', handleBeforeUnload);
-  //   };
-  // }, []);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   function handleSearch(searchInput) {
     if (searchInput.length > 0) {
@@ -101,7 +101,6 @@ function App() {
           <img src={landingImg} alt="Cartoon Girl Enjoying Music" className='landingImg' />
         </main>
       }
-        
     </div>
   );
 }

@@ -1,6 +1,9 @@
-.playlist {
-    display: grid;
-    justify-items: center;
+.playlistWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    background-color: inherit;
+    height: fit-content;
 }
 
 input {
@@ -10,11 +13,29 @@ input {
     text-align: center;
     width: 30rem;
     padding: 10px 5px;
+    box-shadow: 
 }
 
 button {
+    font-family: inherit;
+    font-size: 14px;
     background-color: transparent;
     border-radius: 25px;
     width: 5rem;
     padding: 4px 2px;
+    margin: 0.5rem 2.5rem 0.5rem 2.5rem;
+}
+
+.submitButton {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    justify-self: center;
+    margin: 1.5rem auto;
+    padding: 0.25rem 0.775rem;
+}
+
+button:Hover {
+    cursor: pointer;
+    background-color: #DF9437;
 }

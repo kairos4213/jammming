@@ -9,14 +9,14 @@ export default function Playlist({playlistName, playlistTracks, onUpdatePlaylist
     }
 
     return (
-        <div className={styles.playlist}>
+        <div className={styles.playlistWrapper}>
             <input onChange={handlePlaylistNameChange} value={playlistName} placeholder='Enter Playlist Name' />
             <Tracklist
                 tracks={playlistTracks} 
                 onRemoveTrack={onRemoveTrack}
                 isRemove={true}
             />
-            <button type="button" onClick={onSavePlaylist}>Save to Spotify</button>
+            <button type="submit" onClick={onSavePlaylist} className={styles.submitButton}>Save to Spotify</button>
         </div>
     )
 }

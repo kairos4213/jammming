@@ -1,12 +1,14 @@
-.app {
-    background: linear-gradient(115deg, #06DFFA, #DF9437);
-    height: 100vh;
+* {
+    box-sizing: border-box;
 }
 
-main {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    justify-items: center;
+html {
+    background: linear-gradient(115deg, #06DFFA, #DF9437);
+    font-family: 'Roboto Slab', serif;
+}
+
+.app {
+    min-height: 100vh;
 }
 
 .logoWrapper {
@@ -15,6 +17,7 @@ main {
     font-size: 3rem;
     background: linear-gradient(90deg,#03384A, #835561);
     background-clip: text;
+    -webkit-background-clip: text;
     color: transparent;
 }
 
@@ -30,6 +33,7 @@ main {
     left: 34%;
     background: linear-gradient(90deg,#03384A, #835561);
     background-clip: text;
+    -webkit-background-clip: text;
     color: transparent;
 }
 
