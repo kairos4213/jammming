@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d087b117.css",
+    "main.js": "/static/js/main.1fd70cdd.js",
+    "static/media/JammingMainPage.png": "/static/media/JammingMainPage.09a983acfd321026ed9a.png",
+    "static/media/JammmingLogo.png": "/static/media/JammmingLogo.ecfae42e31f4672c52ef.png",
+    "static/media/Spotify_Logo_RGB_Black.png": "/static/media/Spotify_Logo_RGB_Black.0d1e5545dee9f6dc1079.png",
+    "index.html": "/index.html",
+    "main.d087b117.css.map": "/static/css/main.d087b117.css.map",
+    "main.1fd70cdd.js.map": "/static/js/main.1fd70cdd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d087b117.css",
+    "static/js/main.1fd70cdd.js"
+  ]
+}
